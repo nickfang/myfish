@@ -15,3 +15,19 @@ diesel::table! {
         updated_at -> Timestamp,
     }
 }
+
+diesel::table! {
+    users (id) {
+        id -> Int4,
+        username -> Text,
+        email -> Text,
+        password -> Text,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
+    }
+}
+
+diesel::allow_tables_to_appear_in_same_query!(
+    transactions,
+    users,
+);
