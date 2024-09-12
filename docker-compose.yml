@@ -1,0 +1,14 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest  # Use the latest stable PostgreSQL image
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"  # Map the container's port 5432 to the host's port 5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persist data even if the container is recreated
+
+volumes:
+  postgres_data:
