@@ -4,13 +4,13 @@ diesel::table! {
     transactions (id) {
         id -> Int4,
         date -> Date,
-        name -> Text,
-        amount -> Numeric,
-        transaction_type -> Text,
-        category -> Text,
+        name -> Varchar,
+        amount -> Int4,
+        transaction_type -> Varchar,
+        category -> Varchar,
         #[max_length = 255]
         description -> Varchar,
-        note -> Nullable<Text>,
+        note -> Nullable<Varchar>,
         created_at -> Timestamp,
         updated_at -> Timestamp,
     }
@@ -19,9 +19,9 @@ diesel::table! {
 diesel::table! {
     users (id) {
         id -> Int4,
-        username -> Text,
-        email -> Text,
-        password -> Text,
+        username -> Varchar,
+        email -> Varchar,
+        password -> Varchar,
         created_at -> Timestamp,
         updated_at -> Timestamp,
     }

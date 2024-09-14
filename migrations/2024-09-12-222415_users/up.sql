@@ -2,9 +2,9 @@
 
 CREATE TABLE "users"(
 	"id" INT4 NOT NULL PRIMARY KEY,
-	"username" TEXT NOT NULL,
-	"email" TEXT NOT NULL,
-	"password" TEXT NOT NULL,
+	"username" VARCHAR NOT NULL,
+	"email" VARCHAR NOT NULL,
+	"password" VARCHAR NOT NULL,
 	"created_at" TIMESTAMP NOT NULL,
 	"updated_at" TIMESTAMP NOT NULL
 );
