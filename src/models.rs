@@ -1,9 +1,9 @@
 use serde::{ Deserialize, Serialize };
 use diesel::{ Queryable, Insertable, AsChangeset };
 use chrono::NaiveDateTime;
-use crate::schema::*;
+use crate::schema::{ users, transactions };
 
-#[derive(Queryable, Serialize, Deserialize)]
+#[derive(Queryable, Serialize, Deserialize, AsChangeset)]
 pub struct User {
     #[serde(skip_deserializing)]
     pub id: i32,
@@ -16,7 +16,7 @@ pub struct User {
     pub updated_at: NaiveDateTime,
 }
 
-#[derive(Insertable, Deserialize)]
+#[derive(Insertable, Deserialize, AsChangeset)]
 #[diesel(table_name = users)]
 pub struct NewUser {
     pub username: String,

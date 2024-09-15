@@ -22,3 +22,5 @@ Cargo.lock
 
 #Environment
 .env
+
+.DS_Store
