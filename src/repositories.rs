@@ -3,7 +3,6 @@ use diesel_async::{ AsyncPgConnection, RunQueryDsl };
 
 use crate::schema::{ users, transactions };
 use crate::models::{ User, NewUser, Transaction, NewTransaction };
-
 pub struct UserRepository;
 
 impl UserRepository {
