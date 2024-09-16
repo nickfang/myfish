@@ -5,7 +5,6 @@ use diesel_migrations::{ EmbeddedMigrations, MigrationHarness };
 
 mod schema;
 mod models;
-mod repositories;
 mod handlers;
 mod database;
 

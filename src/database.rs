@@ -2,7 +2,7 @@ use diesel::prelude::*;
 use diesel::r2d2::{ self, ConnectionManager };
 use dotenvy::dotenv;
 
-use crate::models::{ User, NewUser };
+use crate::models::users::{ User, NewUser };
 use crate::schema::users::dsl::*;
 
 pub type DBPool = r2d2::Pool<ConnectionManager<PgConnection>>;

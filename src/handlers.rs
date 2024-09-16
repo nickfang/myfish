@@ -1,5 +1,5 @@
 use actix_web::{ web, get, post, delete, put, HttpResponse };
-use crate::models::{ User, NewUser };
+use crate::models::users::{ User, NewUser };
 use crate::database::Database;
 
 #[get("/users")]
