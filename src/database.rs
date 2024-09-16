@@ -30,10 +30,6 @@ impl Database {
         users.find(find_id).first::<User>(&mut self.pool.get().unwrap()).ok()
     }
 
-    pub fn get_user_by_email(&self, user_email: String) -> Result<User, diesel::result::Error> {
-        users.filter(email.eq(user_email)).first::<User>(&mut self.pool.get().unwrap())
-    }
-
     pub fn create_user(&self, new_user: NewUser) -> Result<User, diesel::result::Error> {
         let result: Result<User, diesel::result::Error> = diesel
             ::insert_into(users)
