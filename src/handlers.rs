@@ -1,5 +1,4 @@
 use actix_web::{ web, get, post, delete, put, HttpResponse };
-use crate::repositories::{ UserRepository };
 use crate::models::{ User, NewUser };
 use crate::database::Database;
 
@@ -16,9 +15,15 @@ pub async fn get_user(db: web::Data<Database>, id: web::Path<i32>) -> HttpRespon
 }
 
 #[post("/users")]
-pub async fn create_user(db: web::Data<Database>, user: web::Json<NewUser>) -> HttpResponse {
-    let user = db.create_user(user.into_inner()).unwrap();
-    HttpResponse::Ok().json(user)
+pub async fn create_user(
+    db: web::Data<Database>,
+    new_user: web::Json<NewUser>
+) -> Result<HttpResponse, actix_web::Error> {
+    let user = db.create_user(new_user.into_inner());
+    match user {
+        Ok(user) => Ok(HttpResponse::Ok().json(user)),
+        Err(e) => Err(actix_web::error::ErrorInternalServerError(e)),
+    }
 }
 
 #[delete("/users/{id}")]

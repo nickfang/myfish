@@ -2,9 +2,6 @@ use actix_web::{ get, web, App, HttpResponse, HttpServer, Responder, Result };
 use env_logger::Env;
 use serde::Serialize;
 use diesel_migrations::{ EmbeddedMigrations, MigrationHarness };
-use diesel::r2d2::ConnectionManager; // Add this line
-
-use crate::database::Database;
 
 mod schema;
 mod models;
@@ -58,6 +55,6 @@ async fn main() -> std::io::Result<()> {
             .default_service(web::route().to(not_found_error))
             .wrap(actix_web::middleware::Logger::default())
     })
-        .bind(("0.0.0.0", 8000))?
+        .bind(("0.0.0.0", 8888))?
         .run().await
 }

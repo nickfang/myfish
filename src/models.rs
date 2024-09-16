@@ -3,7 +3,7 @@ use diesel::{ Queryable, Insertable, AsChangeset };
 use chrono::NaiveDateTime;
 use crate::schema::{ users, transactions };
 
-#[derive(Queryable, Serialize, Deserialize, AsChangeset)]
+#[derive(Queryable, Serialize, Deserialize, AsChangeset, Debug, Clone)]
 pub struct User {
     #[serde(skip_deserializing)]
     pub id: i32,
@@ -16,7 +16,7 @@ pub struct User {
     pub updated_at: NaiveDateTime,
 }
 
-#[derive(Insertable, Deserialize, AsChangeset)]
+#[derive(Insertable, Deserialize, AsChangeset, Debug, Clone)]
 #[diesel(table_name = users)]
 pub struct NewUser {
     pub username: String,
