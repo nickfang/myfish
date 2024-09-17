@@ -3,3 +3,4 @@
 DROP TABLE transactions;
 DROP TABLE assets;
 DROP TABLE liabilities;
+DROP TABLE users;

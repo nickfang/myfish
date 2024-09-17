@@ -1,4 +1,5 @@
 use actix_web::{ web, get, post, delete, put, HttpResponse };
+use uuid::Uuid;
 use crate::models::users::{ User, NewUser };
 use crate::database::Database;
 
@@ -9,7 +10,7 @@ pub async fn get_users(db: web::Data<Database>) -> HttpResponse {
 }
 
 #[get("/users/{id}")]
-pub async fn get_user(db: web::Data<Database>, id: web::Path<i32>) -> HttpResponse {
+pub async fn get_user(db: web::Data<Database>, id: web::Path<Uuid>) -> HttpResponse {
     let user = db.get_user(id.into_inner()).unwrap();
     HttpResponse::Ok().json(user)
 }
@@ -27,7 +28,7 @@ pub async fn create_user(
 }
 
 #[delete("/users/{id}")]
-pub async fn delete_user(db: web::Data<Database>, id: web::Path<i32>) -> HttpResponse {
+pub async fn delete_user(db: web::Data<Database>, id: web::Path<Uuid>) -> HttpResponse {
     let user = db.delete_user(id.into_inner()).unwrap();
     HttpResponse::Ok().json(user)
 }

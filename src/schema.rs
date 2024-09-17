@@ -3,59 +3,60 @@
 diesel::table! {
     assets (id) {
         id -> Uuid,
-        name -> Nullable<Varchar>,
-        value -> Nullable<Int4>,
+        name -> Varchar,
+        value -> Int4,
         description -> Nullable<Text>,
-        longterm -> Nullable<Bool>,
+        longterm -> Bool,
         date_acquired -> Nullable<Date>,
         date_divested -> Nullable<Date>,
-        user_id -> Nullable<Uuid>,
-        created_at -> Nullable<Timestamp>,
-        updated_at -> Nullable<Timestamp>,
+        user_id -> Uuid,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
     }
 }
 
 diesel::table! {
     liabilities (id) {
         id -> Uuid,
-        name -> Nullable<Varchar>,
+        name -> Varchar,
         description -> Nullable<Text>,
         amount -> Nullable<Int4>,
         payee -> Nullable<Varchar>,
         payee_info -> Nullable<Text>,
         longterm -> Nullable<Bool>,
-        user_id -> Nullable<Uuid>,
-        created_at -> Nullable<Timestamp>,
-        updated_at -> Nullable<Timestamp>,
+        user_id -> Uuid,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
     }
 }
 
 diesel::table! {
     transactions (id) {
         id -> Uuid,
-        date -> Nullable<Timestamp>,
-        name -> Nullable<Varchar>,
+        date -> Date,
+        name -> Varchar,
         amount -> Nullable<Int4>,
-        transaction_type -> Nullable<Varchar>,
-        category -> Nullable<Varchar>,
-        description -> Nullable<Text>,
+        transaction_type -> Varchar,
+        category -> Varchar,
+        description -> Text,
         note -> Nullable<Varchar>,
-        user_id -> Nullable<Uuid>,
+        user_id -> Uuid,
         asset_id -> Nullable<Uuid>,
         liability_id -> Nullable<Uuid>,
-        created_at -> Nullable<Timestamp>,
-        updated_at -> Nullable<Timestamp>,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
     }
 }
 
 diesel::table! {
     users (id) {
         id -> Uuid,
-        username -> Nullable<Varchar>,
-        email -> Nullable<Varchar>,
-        phone -> Nullable<Varchar>,
-        created_at -> Nullable<Timestamp>,
-        updated_at -> Nullable<Timestamp>,
+        username -> Varchar,
+        email -> Varchar,
+        phone -> Varchar,
+        password -> Varchar,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
     }
 }
 

@@ -1,6 +1,7 @@
 use diesel::prelude::*;
 use diesel::r2d2::{ self, ConnectionManager };
 use dotenvy::dotenv;
+use uuid::Uuid;
 
 use crate::models::users::{ User, NewUser };
 use crate::schema::users::dsl::*;
@@ -26,7 +27,7 @@ impl Database {
         users.load::<User>(&mut self.pool.get().unwrap()).expect("Failed to get users.")
     }
 
-    pub fn get_user(&self, find_id: i32) -> Option<User> {
+    pub fn get_user(&self, find_id: Uuid) -> Option<User> {
         users.find(find_id).first::<User>(&mut self.pool.get().unwrap()).ok()
     }
 
@@ -44,7 +45,7 @@ impl Database {
             .set(&user)
             .get_result(&mut self.pool.get().unwrap())
     }
-    pub fn delete_user(&self, user_id: i32) -> Result<usize, diesel::result::Error> {
+    pub fn delete_user(&self, user_id: Uuid) -> Result<usize, diesel::result::Error> {
         diesel::delete(users.find(user_id)).execute(&mut self.pool.get().unwrap())
     }
 }
